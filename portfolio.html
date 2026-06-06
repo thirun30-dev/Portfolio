@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Thirunavukkarasu Veeramani — Robotics & Automation Engineer, AI/ML Enthusiast and Embedded Systems Developer based in Chennai, India." />
+  <meta name="keywords"
+    content="Robotics, Automation, ESP32, ROS, Python, Machine Learning, Embedded Systems, Chennai, Tamil Nadu" />
+  <meta name="author" content="Thirunavukkarasu Veeramani" />
+  <meta property="og:title" content="Thirunavukkarasu Veeramani — Robotics Engineer" />
+  <meta property="og:description"
+    content="Building intelligent robotic systems from the ground up. Bridging hardware and software." />
+  <meta property="og:type" content="website" />
+  <title>Thirunavukkarasu Veeramani — Robotics Engineer</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- CUSTOM CURSOR -->
+  <div id="custom-cursor"></div>
+  <div id="custom-cursor-ring"></div>
+
+  <!-- SCROLL PROGRESS BAR -->
+  <div id="scroll-progress"></div>
+
+  <!-- BACK TO TOP -->
+  <button id="back-to-top" aria-label="Back to top">↑</button>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a class="nav-logo" href="#hero">TV_</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <canvas id="particle-canvas"></canvas>
+    <div class="hero-glow"></div>
+    <div class="hero-glow2"></div>
+    <div class="hero-content">
+      <div class="hero-tag">// Available for Internships &amp; Collaborations</div>
+      <h1 class="hero-name">
+        Thirunavukkarasu<br><span>Veeramani</span>
+      </h1>
+      <p class="hero-title">
+        <span id="typewriter"></span><span class="cursor-blink">|</span>
+      </p>
+      <p class="hero-desc">
+        Building intelligent robotic systems from the ground up.
+        Bridging the gap between hardware and software — from PID controllers
+        on embedded boards to autonomous navigation pipelines.
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="#contact" class="btn btn-outline">Get in Touch</a>
+        <a href="https://github.com/thirun30-dev" target="_blank" class="btn btn-outline">GitHub ↗</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">8.2<span>+</span></div>
+          <div class="stat-label">CGPA</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">3<span>+</span></div>
+          <div class="stat-label">Projects Built</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">5<span>+</span></div>
+          <div class="stat-label">Languages</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">2<span>+</span></div>
+          <div class="stat-label">Years Building</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-header reveal">
+      <span class="section-num">01 //</span>
+      <h2 class="section-title">About Me</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-left reveal">
+        <div class="profile-photo-wrap">
+          <div class="profile-photo-ring"></div>
+          <img src="Thirunavukkarasu.png" alt="Thirunavukkarasu Veeramani" class="profile-photo" />
+          <div class="profile-photo-corner tl"></div>
+          <div class="profile-photo-corner tr"></div>
+          <div class="profile-photo-corner bl"></div>
+          <div class="profile-photo-corner br"></div>
+          <div class="profile-scan-line"></div>
+        </div>
+        <div class="about-text">
+          <p>
+            I'm a Robotics and Automation Engineering student at Rajalakshmi Engineering College,
+            Chennai — currently in my 3rd year with a strong CGPA of 8.2. I'm also pursuing an
+            Online B.S. in Data Science from IIT Madras, giving me dual expertise in physical robotics
+            and data-driven intelligence.
+          </p>
+          <p>
+            My work sits at the intersection of embedded systems, real-time control, and AI. I've built
+            everything from self-balancing robots using PID algorithms to autonomous mobile robots with
+            obstacle avoidance. I love turning theoretical concepts into physical, working machines.
+          </p>
+          <p>
+            Outside of robotics, I dive deep into machine learning and data analysis — always looking
+            for ways to make systems smarter, more adaptive, and autonomous.
+          </p>
+        </div>
+      </div>
+      <ul class="info-list reveal">
+        <li class="info-item">
+          <span class="info-label">Location</span>
+          <span class="info-val">Chennai, Tamil Nadu, India</span>
+        </li>
+        <li class="info-item">
+          <span class="info-label">Degree</span>
+          <span class="info-val">B.E. Robotics &amp; Automation (2023–2027)</span>
+        </li>
+        <li class="info-item">
+          <span class="info-label">Also</span>
+          <span class="info-val">Online B.S. Data Science · IIT Madras</span>
+        </li>
+        <li class="info-item">
+          <span class="info-label">CGPA</span>
+          <span class="info-val">8.2 / 10</span>
+        </li>
+        <li class="info-item">
+          <span class="info-label">Focus</span>
+          <span class="info-val">Robotics · Embedded Systems · ML · Autonomous Vehicles</span>
+        </li>
+        <li class="info-item">
+          <span class="info-label">Email</span>
+          <span class="info-val">thirusriram3012@gmail.com</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-header reveal">
+      <span class="section-num">02 //</span>
+      <h2 class="section-title">Projects</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="filter-container reveal">
+      <div class="filter-tabs">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="robotics">Robotics &amp; Embedded</button>
+        <button class="filter-btn" data-filter="ai">AI &amp; Data Science</button>
+      </div>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- Project 1 - Featured -->
+      <div class="project-card project-featured reveal" data-category="robotics">
+        <div class="project-header">
+          <div class="project-header-left">
+            <div class="project-num">Project 01 · <span style="color:var(--accent)">Featured</span></div>
+            <h3 class="project-title">Autonomous Mobile Robot (ROBIX)</h3>
+          </div>
+          <div class="project-header-right">
+            <span class="badge-ongoing"><span class="badge-dot"></span>Live</span>
+            <span class="project-toggle">+</span>
+          </div>
+        </div>
+        <div class="project-info-collapse">
+          <div class="project-info-inner">
+            <div class="project-date">Jun 2026 · Ongoing</div>
+            <ul class="project-desc">
+              <li>AMR designed for autonomous navigation &amp; obstacle avoidance in indoor environments.</li>
+              <li>Integrated ESP32, sensors &amp; motor control for real-time movement &amp; localization.</li>
+              <li>Collaborated on robot design, testing &amp; system optimization to improve navigation accuracy.</li>
+            </ul>
+            <div class="project-tags">
+              <span class="tag">ESP32</span>
+              <span class="tag">ROS</span>
+              <span class="tag green">Autonomous Nav</span>
+              <span class="tag red">Sensor Fusion</span>
+              <span class="tag">C++</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/thirun30-dev" target="_blank" class="project-link-btn">◈ View on GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card reveal" data-category="robotics">
+        <div class="project-header">
+          <div class="project-header-left">
+            <div class="project-num">Project 02</div>
+            <h3 class="project-title">Self-Balancing Robot</h3>
+          </div>
+          <div class="project-header-right">
+            <span class="project-toggle">+</span>
+          </div>
+        </div>
+        <div class="project-info-collapse">
+          <div class="project-info-inner">
+            <div class="project-date">May 2026 — Jun 2026</div>
+            <ul class="project-desc">
+              <li>Two-wheel self-balancing robot using ESP32, MPU6050, TB6612FNG motor driver &amp; N20 motors.</li>
+              <li>Implemented PID-based stabilization algorithms for real-time balancing performance.</li>
+            </ul>
+            <div class="project-tags">
+              <span class="tag">ESP32</span>
+              <span class="tag red">PID Control</span>
+              <span class="tag">MPU6050</span>
+              <span class="tag green">Embedded C</span>
+              <span class="tag">Real-Time</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/thirun30-dev" target="_blank" class="project-link-btn">◈ View on GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card reveal" data-category="robotics">
+        <div class="project-header">
+          <div class="project-header-left">
+            <div class="project-num">Project 03</div>
+            <h3 class="project-title">Bluetooth Robo Race Bot</h3>
+          </div>
+          <div class="project-header-right">
+            <span class="project-toggle">+</span>
+          </div>
+        </div>
+        <div class="project-info-collapse">
+          <div class="project-info-inner">
+            <div class="project-date">Apr 2026</div>
+            <ul class="project-desc">
+              <li>Bluetooth-controlled racing robot designed and programmed on ESP32.</li>
+              <li>Integrated motor control, wireless communication &amp; mobile app control functionality.</li>
+            </ul>
+            <div class="project-tags">
+              <span class="tag">ESP32</span>
+              <span class="tag red">Bluetooth</span>
+              <span class="tag green">Motor Control</span>
+              <span class="tag">Arduino</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/thirun30-dev" target="_blank" class="project-link-btn">◈ View on GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="project-card reveal" data-category="ai">
+        <div class="project-header">
+          <div class="project-header-left">
+            <div class="project-num">Project 04</div>
+            <h3 class="project-title">Autonomous Lane Detection using Depth Camera</h3>
+          </div>
+          <div class="project-header-right">
+            <span class="project-toggle">+</span>
+          </div>
+        </div>
+        <div class="project-info-collapse">
+          <div class="project-info-inner">
+            <div class="project-date">Feb 2026 — May 2026</div>
+            <ul class="project-desc">
+              <li>Built a real-time lane detection pipeline using a depth (RGB-D) camera and OpenCV for autonomous vehicle navigation.</li>
+              <li>Integrated depth data for 3D lane boundary estimation, enabling safe path planning on uneven and unmarked roads.</li>
+              <li>Achieved robust detection under varying lighting conditions using adaptive thresholding and perspective-transform techniques.</li>
+            </ul>
+            <div class="project-tags">
+              <span class="tag">Python</span>
+              <span class="tag red">OpenCV</span>
+              <span class="tag green">Depth Camera</span>
+              <span class="tag">ROS</span>
+              <span class="tag">Computer Vision</span>
+              <span class="tag">Autonomous Nav</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/thirun30-dev" target="_blank" class="project-link-btn">◈ View on GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-header reveal">
+      <span class="section-num">03 //</span>
+      <h2 class="section-title">Skills</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="skills-container">
+
+      <div class="reveal">
+        <div class="skill-group-title">Technical Proficiency</div>
+        <div class="skill-bars">
+          <div class="skill-row">
+            <div class="skill-meta"><span class="skill-name">Python</span><span class="skill-pct">90%</span></div>
+            <div class="skill-track">
+              <div class="skill-fill" data-w="90"></div>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-meta"><span class="skill-name">C / C++</span><span class="skill-pct">85%</span></div>
+            <div class="skill-track">
+              <div class="skill-fill" data-w="85"></div>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-meta"><span class="skill-name">Arduino Programming</span><span
+                class="skill-pct">92%</span></div>
+            <div class="skill-track">
+              <div class="skill-fill" data-w="92"></div>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-meta"><span class="skill-name">Git &amp; GitHub</span><span class="skill-pct">82%</span>
+            </div>
+            <div class="skill-track">
+              <div class="skill-fill" data-w="82"></div>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-meta"><span class="skill-name">Linux</span><span class="skill-pct">78%</span></div>
+            <div class="skill-track">
+              <div class="skill-fill" data-w="78"></div>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-meta"><span class="skill-name">ROS (Robot Operating System)</span><span
+                class="skill-pct">75%</span></div>
+            <div class="skill-track">
+              <div class="skill-fill" data-w="75"></div>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-meta"><span class="skill-name">Machine Learning</span><span class="skill-pct">78%</span>
+            </div>
+            <div class="skill-track">
+              <div class="skill-fill" data-w="78"></div>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-meta"><span class="skill-name">Sensor Integration</span><span class="skill-pct">88%</span>
+            </div>
+            <div class="skill-track">
+              <div class="skill-fill" data-w="88"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="skill-group-title">Professional Skills</div>
+        <div class="skill-pills" style="margin-bottom:2rem">
+          <span class="pill">Robotics System Design</span>
+          <span class="pill">Autonomous Navigation</span>
+          <span class="pill">Problem Solving</span>
+          <span class="pill">Machine Learning</span>
+          <span class="pill">Data Analysis</span>
+          <span class="pill">Team Collaboration</span>
+        </div>
+        <div class="skill-group-title">Robotics &amp; Embedded</div>
+        <div class="skill-pills">
+          <span class="pill">ROS</span>
+          <span class="pill">Sensor Integration</span>
+          <span class="pill">PID Control</span>
+          <span class="pill">Motor Control</span>
+          <span class="pill">ESP32</span>
+          <span class="pill">Wireless Communication</span>
+          <span class="pill">Embedded Systems</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Tools & Tech Grid -->
+    <div class="tools-section reveal">
+      <div class="skill-group-title" style="margin-bottom:1.5rem;">Tools &amp; Technologies</div>
+      <div class="tools-grid">
+        <div class="tool-chip">🐍 Python</div>
+        <div class="tool-chip">⚡ C / C++</div>
+        <div class="tool-chip">🤖 ROS</div>
+        <div class="tool-chip">🔌 ESP32</div>
+        <div class="tool-chip">🔧 Arduino</div>
+        <div class="tool-chip">🐙 Git / GitHub</div>
+        <div class="tool-chip">🐧 Linux</div>
+        <div class="tool-chip">📊 Jupyter</div>
+        <div class="tool-chip">🧠 ML / AI</div>
+        <div class="tool-chip">📡 MQTT</div>
+        <div class="tool-chip">🎛️ MATLAB</div>
+        <div class="tool-chip">💻 VS Code</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE TIMELINE -->
+  <section id="experience">
+    <div class="section-header reveal">
+      <span class="section-num">04 //</span>
+      <h2 class="section-title">Experience</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="timeline">
+
+      <!-- Item 1: ODD → card LEFT -->
+      <div class="timeline-item reveal-left">
+        <div class="timeline-content">
+          <div class="timeline-date">Jun 2026 · Ongoing</div>
+          <div class="timeline-card">
+            <div class="timeline-role">Robotics Project Lead</div>
+            <div class="timeline-org">ROBIX · Rajalakshmi Engineering College</div>
+            <div class="timeline-desc">Leading the design and development of an Autonomous Mobile Robot (AMR) for indoor
+              navigation. Responsible for system architecture, sensor integration, and team coordination.</div>
+            <div class="project-tags" style="margin-top:0.8rem;justify-content:flex-end;">
+              <span class="tag">ESP32</span><span class="tag">ROS</span><span class="tag green">Team Lead</span>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-marker">
+          <div class="timeline-dot"></div>
+          <div class="timeline-line"></div>
+        </div>
+        <div class="timeline-empty"></div>
+      </div>
+
+      <!-- Item 2: EVEN → card RIGHT -->
+      <div class="timeline-item reveal-right">
+        <div class="timeline-empty"></div>
+        <div class="timeline-marker">
+          <div class="timeline-dot"></div>
+          <div class="timeline-line"></div>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-date">Apr 2026</div>
+          <div class="timeline-card">
+            <div class="timeline-role">Robo Race Participant</div>
+            <div class="timeline-org">Technical Fest · Chennai</div>
+            <div class="timeline-desc">Competed in a Robo Race event — designed, built and programmed a
+              Bluetooth-controlled racing robot from scratch within the competition timeline.</div>
+            <div class="project-tags" style="margin-top:0.8rem;">
+              <span class="tag red">Competition</span><span class="tag">Bluetooth</span><span class="tag green">Arduino</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 3: ODD → card LEFT -->
+      <div class="timeline-item reveal-left">
+        <div class="timeline-content">
+          <div class="timeline-date">Sep 2023 · Ongoing</div>
+          <div class="timeline-card">
+            <div class="timeline-role">B.E. Robotics Student</div>
+            <div class="timeline-org">Rajalakshmi Engineering College · Chennai</div>
+            <div class="timeline-desc">Pursuing B.E. in Robotics &amp; Automation with active involvement in robotics clubs
+              and technical projects. Maintaining a strong CGPA of 8.2 while working on real-world robot builds.</div>
+            <div class="project-tags" style="margin-top:0.8rem;justify-content:flex-end;">
+              <span class="tag">Robotics</span><span class="tag green">CGPA 8.2</span><span class="tag">Engineering</span>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-marker">
+          <div class="timeline-dot"></div>
+          <div class="timeline-line"></div>
+        </div>
+        <div class="timeline-empty"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS & COMPETITIONS -->
+  <section id="achievements">
+    <div class="section-header reveal">
+      <span class="section-num">05 //</span>
+      <h2 class="section-title">Achievements</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="achievements-grid">
+
+      <div class="achievement-card reveal">
+        <div class="achievement-header">
+          <span class="achievement-badge">Competition</span>
+          <span class="achievement-year">2025</span>
+        </div>
+        <div class="achievement-body">
+          <div class="achievement-icon">🤖</div>
+          <div class="achievement-info">
+            <h3 class="achievement-title">DD Robocon National Robotics Championship</h3>
+            <div class="achievement-role">Mechanical &amp; Control Design Lead</div>
+            <p class="achievement-desc">Designed robot chassis structures and programmed navigation controllers/algorithms for autonomous picking robots under strict competition guidelines.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="achievement-card reveal">
+        <div class="achievement-header">
+          <span class="achievement-badge">Hackathon</span>
+          <span class="achievement-year">2024</span>
+        </div>
+        <div class="achievement-body">
+          <div class="achievement-icon">🌾</div>
+          <div class="achievement-info">
+            <h3 class="achievement-title">Smart India Hackathon</h3>
+            <div class="achievement-role">National Finalist · Team Lead</div>
+            <p class="achievement-desc">Developed an IoT-enabled smart agricultural rover featuring AI-powered edge leaf disease detection using ESP32 nodes and custom image processing.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="achievement-card reveal">
+        <div class="achievement-header">
+          <span class="achievement-badge">Academic</span>
+          <span class="achievement-year">2024</span>
+        </div>
+        <div class="achievement-body">
+          <div class="achievement-icon">🎖️</div>
+          <div class="achievement-info">
+            <h3 class="achievement-title">IIT Madras &amp; REC Academic Honors</h3>
+            <div class="achievement-role">Elite + Gold Medalist</div>
+            <p class="achievement-desc">Earned Elite + Gold Medal in NPTEL Python for Data Science and Machine Learning Foundations courses, maintaining an 8.2+ CGPA in Robotics Engineering.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="achievement-card reveal">
+        <div class="achievement-header">
+          <span class="achievement-badge">Open Source</span>
+          <span class="achievement-year">Active</span>
+        </div>
+        <div class="achievement-body">
+          <div class="achievement-icon">💻</div>
+          <div class="achievement-info">
+            <h3 class="achievement-title">Open Source Development</h3>
+            <div class="achievement-role">Developer &amp; Algorithmic Contributor</div>
+            <p class="achievement-desc">Created open-source ROS2 packages for 2D LiDAR navigation; active solver on Kaggle (Top 15% notebooks) and LeetCode platforms.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="section-header reveal">
+      <span class="section-num">06 //</span>
+      <h2 class="section-title">Education</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="edu-stack">
+
+      <div class="edu-card reveal">
+        <div>
+          <div class="edu-degree">B.E. — Robotics and Automation</div>
+          <div class="edu-institution">Rajalakshmi Engineering College</div>
+          <div class="edu-courses">
+            Relevant Coursework: Robotics · Embedded Systems · Artificial Intelligence ·
+            Control Systems · Machine Learning
+          </div>
+        </div>
+        <div class="edu-side">
+          <div class="edu-dates">Sep 2023 — Apr 2027</div>
+          <div class="cgpa-box">
+            <div class="cgpa-num">8.2</div>
+            <div class="cgpa-label">Current CGPA</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="edu-card reveal">
+        <div>
+          <div class="edu-degree">Online B.S. — Data Science</div>
+          <div class="edu-institution">Indian Institute of Technology (IIT) Madras</div>
+          <div class="edu-courses">
+            Coursework in Data Analysis, Statistical Modelling, Machine Learning,
+            and AI-driven applications.
+          </div>
+        </div>
+        <div class="edu-side">
+          <div class="edu-dates">Ongoing</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-header reveal">
+      <span class="section-num">07 //</span>
+      <h2 class="section-title">Contact</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-text reveal">
+        <p>
+          I'm currently open to internship opportunities, research collaborations,
+          and freelance robotics/embedded projects.
+        </p>
+        <p>
+          Whether you're building something ambitious in robotics, autonomous systems,
+          or AI — I'd love to hear from you.
+        </p>
+        <p style="color:var(--accent);">Let's build something remarkable.</p>
+      </div>
+      <div class="contact-links reveal">
+        <a href="mailto:thirusriram3012@gmail.com" class="contact-item">
+          <div class="contact-icon">✉</div>
+          <div class="contact-info">
+            <span class="contact-label">Email</span>
+            <span class="contact-val">thirusriram3012@gmail.com</span>
+          </div>
+        </a>
+        <a href="tel:+919345744397" class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div class="contact-info">
+            <span class="contact-label">Phone</span>
+            <span class="contact-val">+91 93457 44397</span>
+          </div>
+        </a>
+        <a href="https://github.com/thirun30-dev" target="_blank" class="contact-item">
+          <div class="contact-icon">&#9670;</div>
+          <div class="contact-info">
+            <span class="contact-label">GitHub</span>
+            <span class="contact-val">github.com/thirun30-dev</span>
+          </div>
+        </a>
+        <a href="https://linkedin.com/in/thirunavukkarasu-veeramani-140b6a317" target="_blank" class="contact-item">
+          <div class="contact-icon">in</div>
+          <div class="contact-info">
+            <span class="contact-label">LinkedIn</span>
+            <span class="contact-val">thirunavukkarasu-veeramani</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-text">© 2026 Thirunavukkarasu Veeramani · Chennai, India</span>
+    <span class="footer-ascii">ROBOTICS &amp; AUTOMATION · AI/ML · EMBEDDED SYSTEMS</span>
+  </footer>
+
+  <script src="script.js" defer></script>
+
+</body>
+
+</html>
