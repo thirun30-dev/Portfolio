@@ -1,0 +1,148 @@
+.dock-outer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 800;
+  pointer-events: none;
+  padding-bottom: 0.75rem;
+}
+
+.dock-panel {
+  pointer-events: auto;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 0.6rem;
+  border-radius: 24px;
+  background: rgba(10, 15, 28, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.5rem 0.8rem 0.5rem;
+  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.7),
+    0 0 1px rgba(255, 255, 255, 0.15) inset,
+    inset 0 12px 24px -10px rgba(255, 255, 255, 0.05);
+}
+
+/* Glass reflection overlay */
+.dock-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  pointer-events: none;
+}
+
+.dock-item {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  color: rgba(226, 232, 240, 0.8);
+}
+
+.dock-item:hover,
+.dock-item:focus {
+  border-color: rgba(0, 229, 255, 0.5);
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--accent, #00e5ff);
+  box-shadow:
+    0 8px 24px rgba(0, 229, 255, 0.2),
+    inset 0 1px 0 rgba(0, 229, 255, 0.15);
+}
+
+.dock-item.active-section {
+  border-color: rgba(0, 229, 255, 0.4);
+  background: rgba(0, 229, 255, 0.12);
+  color: var(--accent, #00e5ff);
+  box-shadow:
+    0 8px 24px rgba(0, 229, 255, 0.25),
+    inset 0 1px 0 rgba(0, 229, 255, 0.2);
+}
+
+.dock-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dock-label {
+  position: absolute;
+  bottom: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: fit-content;
+  white-space: nowrap;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(15, 23, 42, 0.95);
+  padding: 0.35rem 0.8rem;
+  font-size: 0.72rem;
+  font-family: 'Space Mono', monospace;
+  color: #fff;
+  letter-spacing: 0.05em;
+  backdrop-filter: blur(20px);
+  box-shadow: 
+    0 12px 32px rgba(0, 0, 0, 0.5), 
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Separator */
+.dock-separator {
+  width: 1px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.12);
+  align-self: center;
+  margin: 0 0.25rem;
+  flex-shrink: 0;
+}
+
+/* Indicator dot below active section */
+.dock-item.active-section::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent, #00e5ff);
+  box-shadow: 0 0 8px var(--accent, #00e5ff);
+  animation: dock-dot-pulse 2s ease-in-out infinite;
+}
+
+@keyframes dock-dot-pulse {
+  0%, 100% { opacity: 1; transform: translateX(-50%) scale(1); }
+  50% { opacity: 0.5; transform: translateX(-50%) scale(0.7); }
+}
+
+@media (max-width: 600px) {
+  .dock-panel { gap: 0.3rem; padding: 0.4rem; border-radius: 18px; }
+  .dock-separator { height: 24px; margin: 0 0.1rem; }
+}
