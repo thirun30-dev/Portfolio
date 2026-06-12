@@ -172,51 +172,334 @@ function setupHoverEffects() {
 }
 setupHoverEffects();
 
-/* ── PROJECT ACCORDION Toggles ── */
-function setupProjectAccordion() {
-  const projectCards = document.querySelectorAll('.project-card');
-  projectCards.forEach(card => {
-    const header = card.querySelector('.project-header');
-    const collapse = card.querySelector('.project-info-collapse');
-    if (!header || !collapse) return;
+/* ── FUTURISTIC INTRO/LOADER OVERLAY ── */
+function initIntroLoader() {
+  const overlay = document.getElementById('intro-overlay');
+  const loaderFill = document.getElementById('intro-loader-fill');
+  const terminal = document.getElementById('intro-terminal');
+  if (!overlay || !loaderFill || !terminal) return;
 
-    header.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-    header.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+  const logs = [
+    { text: "System diagnostics initiating...", type: "system", delay: 100 },
+    { text: "Establishing secure link to REC network node...", type: "info", delay: 250 },
+    { text: "Loading kinematics solver: 2WD Differential Drive... [OK]", type: "success", delay: 450 },
+    { text: "Connecting to ESP32 websocket interface... Host: 192.168.1.45", type: "info", delay: 650 },
+    { text: "Calibrating MPU6050 6-Axis IMU sensor...", type: "info", delay: 850 },
+    { text: "Sensor offset computed: [X:-12, Y:45, Z:8]. Calibration OK.", type: "success", delay: 1050 },
+    { text: "Loading ROS2 navigation modules (AMCL, Nav2)...", type: "info", delay: 1250 },
+    { text: "Compiling Embedded C firmware package...", type: "info", delay: 1450 },
+    { text: "Robotics system state: ACTIVE. Battery charge: 92%.", type: "success", delay: 1650 },
+    { text: "Retrieving B.S. Data Science models from IIT Madras servers...", type: "info", delay: 1850 },
+    { text: "Connecting OpenCV lane detection neural pipeline... edge thresholds set.", type: "success", delay: 2050 },
+    { text: "Initializing portfolio web interface shell...", type: "info", delay: 2200 },
+    { text: "SYSTEM ONLINE. Welcome to Thirunavukkarasu's space.", type: "system", delay: 2400 }
+  ];
 
-    header.addEventListener('click', () => {
-      const isExpanded = card.classList.contains('expanded');
+  // Animate the loader fill width alongside logs
+  let progress = 0;
+  const progressInterval = setInterval(() => {
+    progress += 2;
+    if (progress > 100) progress = 100;
+    loaderFill.style.width = progress + '%';
+    if (progress === 100) {
+      clearInterval(progressInterval);
+    }
+  }, 50);
 
-      // Collapse all other project cards
-      projectCards.forEach(c => {
-        if (c !== card && c.classList.contains('expanded')) {
-          c.classList.remove('expanded');
-          const otherCollapse = c.querySelector('.project-info-collapse');
-          if (otherCollapse) otherCollapse.style.maxHeight = '0px';
-        }
-      });
+  logs.forEach(log => {
+    setTimeout(() => {
+      const p = document.createElement('div');
+      p.className = `terminal-line ${log.type}`;
+      p.textContent = `> ${log.text}`;
+      terminal.appendChild(p);
+      terminal.scrollTop = terminal.scrollHeight;
+    }, log.delay);
+  });
 
-      // Toggle this card
-      if (isExpanded) {
-        card.classList.remove('expanded');
-        collapse.style.maxHeight = '0px';
-      } else {
-        card.classList.add('expanded');
-        collapse.style.maxHeight = collapse.scrollHeight + 'px';
+  // End sequence
+  setTimeout(() => {
+    overlay.classList.add('fade-out');
+    document.body.classList.remove('intro-active');
+    
+    // Trigger typewriter effect
+    startTypewriter();
+  }, 2900);
+}
+
+/* ── PROJECT DETAILS MODAL ── */
+function setupProjectModal() {
+  const modal = document.getElementById('project-modal');
+  const modalImg = document.getElementById('modal-img');
+  const modalNum = document.getElementById('modal-num');
+  const modalBadge = document.getElementById('modal-badge');
+  const modalTitle = document.getElementById('modal-title');
+  const modalDate = document.getElementById('modal-date');
+  const modalDesc = document.getElementById('modal-desc');
+  const modalTags = document.getElementById('modal-tags');
+  const modalLinks = document.getElementById('modal-links');
+  const modalCloseBtn = document.getElementById('modal-close-btn');
+
+  if (!modal) return;
+
+  document.querySelectorAll('.btn-project-more').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const card = e.target.closest('.project-card');
+      if (!card) return;
+      const detailsData = card.querySelector('.project-details-data');
+      if (!detailsData) return;
+
+      const img = detailsData.querySelector('.detail-img-src')?.textContent || '';
+      const num = detailsData.querySelector('.detail-num')?.textContent || '';
+      const badgeHtml = detailsData.querySelector('.detail-status-badge')?.innerHTML || '';
+      const title = detailsData.querySelector('.detail-title')?.textContent || '';
+      const date = detailsData.querySelector('.detail-date')?.textContent || '';
+      const descHtml = detailsData.querySelector('.detail-desc')?.innerHTML || '';
+      const tagsHtml = detailsData.querySelector('.detail-tags')?.innerHTML || '';
+      const linkBtn = detailsData.querySelector('.project-link-btn');
+
+      if (modalImg) {
+        modalImg.src = img;
+        modalImg.alt = title;
       }
+      if (modalNum) modalNum.textContent = num;
+      if (modalBadge) modalBadge.innerHTML = badgeHtml;
+      if (modalTitle) modalTitle.textContent = title;
+      if (modalDate) modalDate.textContent = date;
+      if (modalDesc) modalDesc.innerHTML = descHtml;
+      if (modalTags) modalTags.innerHTML = tagsHtml;
+
+      if (modalLinks) {
+        if (linkBtn) {
+          modalLinks.style.display = 'block';
+          modalLinks.innerHTML = linkBtn.outerHTML;
+          // Apply cursor-hover to cloned button
+          const modalLinkBtn = modalLinks.querySelector('.project-link-btn');
+          if (modalLinkBtn) {
+            modalLinkBtn.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+            modalLinkBtn.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+          }
+        } else {
+          modalLinks.style.display = 'none';
+          modalLinks.innerHTML = '';
+        }
+      }
+
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden'; // Lock page scroll
+      
+      // Cursor aura update
+      document.body.classList.remove('cursor-hover');
     });
   });
 
-  // Re-adjust heights when viewport is resized
-  window.addEventListener('resize', () => {
-    projectCards.forEach(c => {
-      if (c.classList.contains('expanded')) {
-        const collapse = c.querySelector('.project-info-collapse');
-        if (collapse) collapse.style.maxHeight = collapse.scrollHeight + 'px';
-      }
-    });
+  function closeModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  if (modalCloseBtn) {
+    modalCloseBtn.addEventListener('click', closeModal);
+    modalCloseBtn.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+    modalCloseBtn.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+  }
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeModal();
+    }
   });
 }
-setupProjectAccordion();
+setupProjectModal();
+
+/* ── AI PORTFOLIO ASSISTANT ── */
+function setupAIChatbot() {
+  const container = document.getElementById('ai-chat-container');
+  const toggle = document.getElementById('ai-chat-toggle');
+  const windowEl = document.getElementById('ai-chat-window');
+  const closeBtn = document.getElementById('ai-chat-close');
+  const messagesContainer = document.getElementById('ai-chat-messages');
+  const form = document.getElementById('ai-chat-input-form');
+  const input = document.getElementById('ai-chat-input');
+  const suggestions = document.getElementById('ai-chat-suggestions');
+
+  if (!container || !toggle || !windowEl || !closeBtn || !messagesContainer) return;
+
+  // Toggle Chat window open/close
+  toggle.addEventListener('click', () => {
+    const isOpen = windowEl.classList.contains('active');
+    if (isOpen) {
+      windowEl.classList.remove('active');
+      container.classList.remove('chat-open');
+    } else {
+      windowEl.classList.add('active');
+      container.classList.add('chat-open');
+      // Clear ping badge animation when user opens chat
+      const ping = toggle.querySelector('.chat-toggle-ping');
+      if (ping) ping.style.display = 'none';
+      
+      // Focus input
+      setTimeout(() => input.focus(), 300);
+    }
+  });
+
+  closeBtn.addEventListener('click', () => {
+    windowEl.classList.remove('active');
+    container.classList.remove('chat-open');
+  });
+
+  // Suggestion buttons
+  if (suggestions) {
+    suggestions.querySelectorAll('.chat-suggest-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const query = btn.getAttribute('data-query');
+        const text = btn.textContent;
+        handleUserMessage(text, query);
+      });
+      btn.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+      btn.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+    });
+  }
+
+  // Handle Form Submit
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const query = input.value.trim();
+    if (!query) return;
+    input.value = '';
+    handleUserMessage(query, query);
+  });
+
+  // Main flow for user messages
+  function handleUserMessage(text, query) {
+    // Append user message bubble
+    appendBubble(text, 'user');
+
+    // Show typing state
+    showTypingIndicator();
+
+    // Generate response
+    const botResponse = getBotResponse(query);
+
+    // Simulate delay
+    setTimeout(() => {
+      removeTypingIndicator();
+      appendBubble(botResponse, 'bot');
+    }, 800 + Math.random() * 600);
+  }
+
+  function appendBubble(content, sender) {
+    const bubble = document.createElement('div');
+    bubble.className = `chat-bubble ${sender}`;
+    bubble.innerHTML = content;
+    messagesContainer.appendChild(bubble);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+    // Apply cursor-hover to custom-scroll-buttons or links inside the bubble
+    bubble.querySelectorAll('.chat-scroll-btn, .chat-inline-link').forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+    });
+  }
+
+  function showTypingIndicator() {
+    removeTypingIndicator(); // clear existing
+    const bubble = document.createElement('div');
+    bubble.className = 'chat-bubble bot typing';
+    bubble.id = 'chat-typing-indicator';
+    bubble.innerHTML = 'Thinking<span></span><span></span><span></span>';
+    messagesContainer.appendChild(bubble);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  }
+
+  function removeTypingIndicator() {
+    const indicator = document.getElementById('chat-typing-indicator');
+    if (indicator) indicator.remove();
+  }
+
+  // Simple rule-based bot logic
+  function getBotResponse(query) {
+    const q = query.toLowerCase();
+
+    if (q.includes('project') || q.includes('robix') || q.includes('zeno') || q.includes('lane') || q.includes('race')) {
+      return `TK has built some highly interesting robotic systems:<br>
+      • <strong>ROBIX AMR</strong>: An autonomous mobile robot built with ESP32 & ROS featuring obstacle avoidance.<br>
+      • <strong>Zeno</strong>: A self-balancing robot utilizing PID stabilization and MPU6050 sensor offset controls.<br>
+      • <strong>Bluetooth Race Bot</strong>: An ESP32 high-speed RC racer.<br>
+      • <strong>Lane Detection</strong>: An OpenCV autonomous computer vision navigation pipeline.<br><br>
+      You can explore detail popups in the projects grid, or click below to check them:<br>
+      <button class="chat-scroll-btn" data-target="#projects">◈ Scroll to Projects</button>`;
+    }
+
+    if (q.includes('skill') || q.includes('tech') || q.includes('language') || q.includes('ros') || q.includes('python') || q.includes('c++')) {
+      return `TK's primary technical competencies cover:<br>
+      • <strong>Robotics & Embedded C</strong>: ROS/ROS2, ESP32, PID algorithms, sensor integration (IMU, LiDAR, Depth cameras).<br>
+      • <strong>Languages & Tools</strong>: Python, C/C++, SQL, OpenCV, Git/GitHub, MATLAB/Simulink.<br>
+      • <strong>Data Science</strong>: Statistical Modeling, analytical forecasting, database management.<br><br>
+      You can inspect the full skill progress metrics here:<br>
+      <button class="chat-scroll-btn" data-target="#skills">◈ Scroll to Skills</button>`;
+    }
+
+    if (q.includes('education') || q.includes('iit') || q.includes('rec') || q.includes('college') || q.includes('degree') || q.includes('cgpa')) {
+      return `TK is pursuing a double degree track:<br>
+      1. <strong>B.E. in Robotics and Automation Engineering</strong> at Rajalakshmi Engineering College (REC), Chennai. Current CGPA: <strong>8.2/10</strong>.<br>
+      2. <strong>Online B.S. in Data Science & Applications</strong> at IIT Madras, focusing on data structures, statistical analysis, and machine learning algorithms.<br><br>
+      Scroll to his academic details for more info:<br>
+      <button class="chat-scroll-btn" data-target="#education">◈ Scroll to Education</button>`;
+    }
+
+    if (q.includes('achievement') || q.includes('robocon') || q.includes('hackathon') || q.includes('gold') || q.includes('sih')) {
+      return `Some of TK's core academic and team achievements:<br>
+      • <strong>DD Robocon 2025</strong>: Mechanical & Control Design Lead for the national championship team.<br>
+      • <strong>Smart India Hackathon 2024</strong>: National Finalist and Team Lead for an IoT agricultural disease-detecting rover.<br>
+      • <strong>Elite+Gold Medalist</strong>: Awarded by NPTEL for Python for Data Science and programming constructs.<br><br>
+      Jump directly to his accomplishments:<br>
+      <button class="chat-scroll-btn" data-target="#achievements">◈ Scroll to Achievements</button>`;
+    }
+
+    if (q.includes('contact') || q.includes('email') || q.includes('phone') || q.includes('linkedin') || q.includes('hire') || q.includes('github') || q.includes('resume')) {
+      return `Let's build something remarkable! You can get in touch with TK via:<br>
+      • ✉ <strong>Email</strong>: <a href="mailto:thirusriram3012@gmail.com" class="chat-inline-link">thirusriram3012@gmail.com</a><br>
+      • 📞 <strong>Phone</strong>: <a href="tel:+919345744397" class="chat-inline-link">+91 93457 44397</a><br>
+      • ◈ <strong>GitHub</strong>: <a href="https://github.com/thirun30-dev" target="_blank" class="chat-inline-link">github.com/thirun30-dev</a><br>
+      • <strong>LinkedIn</strong>: <a href="https://linkedin.com/in/thirunavukkarasu-veeramani-140b6a317" target="_blank" class="chat-inline-link">linkedin.com/in/thirunavukkarasu-veeramani</a><br><br>
+      Or go straight to the contacts form:<br>
+      <button class="chat-scroll-btn" data-target="#contact">◈ Scroll to Contact</button>`;
+    }
+
+    // Default response
+    return `I'm TK's AI assistant chatbot. Ask me about:<br>
+    • His <strong>projects</strong> (ROBIX, Zeno, Lane detection...)<br>
+    • Technical <strong>skills</strong> (ROS, ESP32, Python, PID...)<br>
+    • <strong>Education</strong> (REC Robotics B.E. or IIT Madras B.S.)<br>
+    • <strong>Achievements</strong> (DD Robocon, Smart India Hackathon finalist...)<br>
+    • How to <strong>contact</strong> him.<br><br>
+    Or select one of the suggestions below!`;
+  }
+
+  // Global event delegation for smooth scroll buttons in chat bubbles
+  document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('chat-scroll-btn')) {
+      const targetId = e.target.getAttribute('data-target');
+      const targetEl = document.querySelector(targetId);
+      if (targetEl) {
+        targetEl.scrollIntoView({ behavior: 'smooth' });
+        
+        // On mobile, close chat window to not block visibility
+        if (window.innerWidth <= 480) {
+          windowEl.classList.remove('active');
+          container.classList.remove('chat-open');
+        }
+      }
+    }
+  });
+}
+setupAIChatbot();
 
 /* ── PROJECT FILTER TABS ── */
 const filterBtns = document.querySelectorAll('.filter-btn');
@@ -233,10 +516,6 @@ filterBtns.forEach(btn => {
         card.classList.remove('hidden');
       } else {
         card.classList.add('hidden');
-        // Reset collapsed state if it's hidden
-        card.classList.remove('expanded');
-        const collapse = card.querySelector('.project-info-collapse');
-        if (collapse) collapse.style.maxHeight = '0px';
       }
     });
 
@@ -253,7 +532,10 @@ filterBtns.forEach(btn => {
    TYPEWRITER EFFECT
    ================================================================ */
 const typewriterEl = document.getElementById('typewriter');
-if (typewriterEl) {
+let typewriterStarted = false;
+
+function type() {
+  if (!typewriterEl) return;
   const roles = [
     'Robotics Engineer',
     'Embedded Systems Dev',
@@ -261,36 +543,53 @@ if (typewriterEl) {
     'Autonomous Nav Builder',
     'PID Control Expert',
   ];
-  let roleIdx = 0;
-  let charIdx = 0;
-  let isDeleting = false;
+  
+  // Keep typewriter variables static/scoped globally to survive recursive timeout calls
+  if (!window.typewriterState) {
+    window.typewriterState = {
+      roleIdx: 0,
+      charIdx: 0,
+      isDeleting: false
+    };
+  }
+  
+  const state = window.typewriterState;
+  const current = roles[state.roleIdx];
 
-  function type() {
-    const current = roles[roleIdx];
-
-    if (isDeleting) {
-      charIdx--;
-      typewriterEl.textContent = current.slice(0, charIdx);
-    } else {
-      charIdx++;
-      typewriterEl.textContent = current.slice(0, charIdx);
-    }
-
-    let delay = isDeleting ? 55 : 95;
-
-    if (!isDeleting && charIdx === current.length) {
-      delay = 1800;
-      isDeleting = true;
-    } else if (isDeleting && charIdx === 0) {
-      isDeleting = false;
-      roleIdx = (roleIdx + 1) % roles.length;
-      delay = 300;
-    }
-
-    setTimeout(type, delay);
+  if (state.isDeleting) {
+    state.charIdx--;
+    typewriterEl.textContent = current.slice(0, state.charIdx);
+  } else {
+    state.charIdx++;
+    typewriterEl.textContent = current.slice(0, state.charIdx);
   }
 
-  setTimeout(type, 800);
+  let delay = state.isDeleting ? 55 : 95;
+
+  if (!state.isDeleting && state.charIdx === current.length) {
+    delay = 1800;
+    state.isDeleting = true;
+  } else if (state.isDeleting && state.charIdx === 0) {
+    state.isDeleting = false;
+    state.roleIdx = (state.roleIdx + 1) % roles.length;
+    delay = 300;
+  }
+
+  setTimeout(type, delay);
+}
+
+function startTypewriter() {
+  if (typewriterStarted) return;
+  typewriterStarted = true;
+  setTimeout(type, 300);
+}
+
+// Initialize loading screen sequence or fallback
+if (!document.getElementById('intro-overlay')) {
+  document.body.classList.remove('intro-active');
+  startTypewriter();
+} else {
+  initIntroLoader();
 }
 
 /* ================================================================
