@@ -358,7 +358,7 @@ export const achievements: Achievement[] = [
     icon: '🎖️',
     title: 'REC Academic Honors',
     role: 'Elite + Gold Medalist',
-    desc: 'Awarded Elite + Gold Medal in NPTEL Python for Data Science and Data Structures Foundations courses, maintaining an 8.2+ CGPA in Robotics & Automation Engineering at Rajalakshmi Engineering College.',
+    desc: 'Awarded Elite + Gold Medal in NPTEL Python for Data Science and Data Structures Foundations courses, maintaining an 8.2 CGPA (Top 5% of the class) in Robotics & Automation Engineering.',
   },
 ];
 
@@ -366,11 +366,11 @@ export const achievements: Achievement[] = [
 export const educationItems: Education[] = [
   {
     id: 'rec',
-    degree: 'B.E. — Robotics and Automation',
+    degree: 'B.E. — Robotics and Automation (Ongoing)',
     institution: 'Rajalakshmi Engineering College',
     coursework: 'Robotics · Embedded Systems · Industrial Automation · Control Systems · Kinematics & Dynamics',
     dates: 'Sep 2023 — Apr 2027',
-    cgpa: '8.2',
+    cgpa: '8.2 (Top 5% of the class)',
   },
   {
     id: 'iit',

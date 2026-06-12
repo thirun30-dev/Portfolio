@@ -17,7 +17,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden', paddingTop: '5rem' }}
+      style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden', paddingTop: 'var(--hero-padding-top, 5rem)', paddingBottom: 'var(--hero-padding-bottom, 5rem)' }}
       onMouseMove={(e) => { mouseRef.current = { x: e.clientX, y: e.clientY }; }}
     >
       <ParticleCanvas mouseRef={mouseRef} />
@@ -35,7 +35,7 @@ export default function Hero() {
       }} />
 
       {/* Content */}
-      <div style={{ position: 'relative', zIndex: 2, maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', width: '100%' }}>
+      <div style={{ position: 'relative', zIndex: 2, maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -43,7 +43,7 @@ export default function Hero() {
         >
           <div style={{
             fontFamily: "'Space Mono', monospace", fontSize: '0.75rem', color: 'var(--accent)',
-            letterSpacing: '0.2em', marginBottom: '1.2rem', opacity: 0.8,
+            letterSpacing: '0.2em', marginBottom: 'var(--hero-tag-margin-bottom, 1.2rem)', opacity: 0.8,
           }}>
             // Available for Internships &amp; Collaborations
           </div>
@@ -55,9 +55,9 @@ export default function Hero() {
           transition={{ delay: 0.2, duration: 0.7, ease: 'easeOut' }}
           style={{
             fontFamily: "var(--font-space-grotesk), sans-serif",
-            fontSize: 'clamp(2.5rem, 8vw, 6rem)',
+            fontSize: 'var(--hero-h1-size, clamp(2.5rem, 8vw, 6rem))',
             fontWeight: 800, lineHeight: 1.05,
-            letterSpacing: '-0.03em', marginBottom: '1rem',
+            letterSpacing: '-0.03em', marginBottom: 'var(--hero-h1-margin-bottom, 1rem)',
             color: 'var(--text)',
           }}
         >
@@ -80,7 +80,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.6 }}
-          style={{ maxWidth: '560px', color: 'var(--muted)', lineHeight: 1.7, fontSize: '1rem', marginTop: '1.2rem', marginBottom: '2rem' }}
+          style={{ maxWidth: '560px', marginLeft: 'auto', marginRight: 'auto', color: 'var(--muted)', lineHeight: 'var(--hero-desc-line-height, 1.7)', fontSize: 'var(--hero-desc-font-size, 1rem)', marginTop: 'var(--hero-desc-margin-top, 1.2rem)', marginBottom: 'var(--hero-desc-margin-bottom, 2rem)' }}
         >
           Building intelligent robotic systems from the ground up.
           Bridging the gap between hardware and software — from PID controllers
@@ -91,7 +91,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.6 }}
-          style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginBottom: '3rem' }}
+          style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginBottom: 'var(--hero-cta-margin-bottom, 3rem)', justifyContent: 'center' }}
         >
           {[
             { label: 'View Projects', href: '#projects', primary: true },
@@ -107,9 +107,9 @@ export default function Hero() {
               whileHover={{ scale: 1.04, y: -2 }}
               whileTap={{ scale: 0.97 }}
               style={{
-                display: 'inline-block', padding: '0.7rem 1.5rem',
+                display: 'inline-block', padding: 'var(--hero-btn-padding, 0.7rem 1.5rem)',
                 borderRadius: '6px', textDecoration: 'none', fontWeight: 600,
-                fontSize: '0.88rem', fontFamily: "var(--font-outfit), sans-serif",
+                fontSize: 'var(--hero-btn-font-size, 0.88rem)', fontFamily: "var(--font-outfit), sans-serif",
                 transition: 'all 0.2s',
                 ...(btn.primary ? {
                   background: 'var(--accent)', color: '#080c14',
@@ -130,7 +130,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.6 }}
-          style={{ display: 'flex', flexWrap: 'wrap', gap: '2rem' }}
+          style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--hero-stats-gap, 2rem)', justifyContent: 'center' }}
         >
           {stats.map((s, i) => (
             <motion.div
@@ -141,7 +141,7 @@ export default function Hero() {
               style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}
             >
               <span style={{
-                fontFamily: "var(--font-space-grotesk), sans-serif", fontSize: '2rem', fontWeight: 800, color: 'var(--accent)', lineHeight: 1,
+                fontFamily: "var(--font-space-grotesk), sans-serif", fontSize: 'var(--hero-stat-num-size, 2rem)', fontWeight: 800, color: 'var(--accent)', lineHeight: 1,
               }}>{s.num}</span>
               <span style={{ fontFamily: "'Space Mono', monospace", fontSize: '0.68rem', color: 'var(--muted)', letterSpacing: '0.1em' }}>
                 {s.label}
