@@ -42,10 +42,10 @@ export default function Hero() {
           transition={{ delay: 0.1, duration: 0.5 }}
         >
           <div style={{
-            fontFamily: "'Space Mono', monospace", fontSize: '0.75rem', color: 'var(--accent)',
+            fontFamily: "'Space Mono', monospace", fontSize: '0.88rem', color: 'var(--accent)',
             letterSpacing: '0.2em', marginBottom: 'var(--hero-tag-margin-bottom, 1.2rem)', opacity: 0.8,
           }}>
-            // Available for Internships &amp; Collaborations
+            Available for Internships &amp; Collaborations
           </div>
         </motion.div>
 

@@ -103,7 +103,7 @@ export default function AIChatbot() {
   };
 
   return (
-    <div style={{ position: 'fixed', bottom: '5.5rem', right: '1.5rem', zIndex: 700 }}>
+    <div style={{ position: 'fixed', bottom: '1.5rem', right: '1.5rem', zIndex: 700 }}>
       {/* Chat window */}
       <AnimatePresence>
         {open && (

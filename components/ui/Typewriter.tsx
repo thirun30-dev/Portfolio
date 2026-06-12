@@ -35,7 +35,7 @@ export default function Typewriter() {
   }, [text, charIdx, isDeleting, roleIdx]);
 
   return (
-    <p className="hero-title" style={{ fontFamily: "'Space Mono', monospace", fontSize: 'clamp(1rem,2.5vw,1.4rem)', color: 'var(--accent)', minHeight: '2rem' }}>
+    <p className="hero-title" style={{ fontFamily: "'Space Mono', monospace", fontSize: 'clamp(1.2rem, 3.2vw, 1.8rem)', color: 'var(--accent)', minHeight: '2rem' }}>
       <span>{text}</span>
       <span className="cursor-blink">|</span>
     </p>
