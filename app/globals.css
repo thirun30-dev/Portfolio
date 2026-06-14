@@ -400,4 +400,179 @@ section {
   }
 }
 
+/* ── HOLOGRAPHIC & SCI-FI MATRIX STYLES ──────────────────── */
 
+/* Scanning animation */
+@keyframes holo-sweep {
+  0% { top: 0%; opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.8; }
+  100% { top: 100%; opacity: 0; }
+}
+
+@keyframes holo-flicker {
+  0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+    opacity: 0.99;
+    filter: hue-rotate(0deg) saturate(1);
+  }
+  20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+    opacity: 0.94;
+    filter: hue-rotate(10deg) saturate(1.2) brightness(1.1);
+  }
+}
+
+.holo-panel {
+  position: relative;
+  background: rgba(6, 12, 28, 0.95) !important;
+  border: 1px solid rgba(0, 229, 255, 0.3) !important;
+  box-shadow: 
+    0 0 35px rgba(0, 229, 255, 0.18),
+    inset 0 0 25px rgba(0, 229, 255, 0.12) !important;
+  backdrop-filter: blur(16px) !important;
+  color: var(--text);
+  overflow: hidden;
+  animation: holo-flicker 12s infinite;
+}
+
+/* Dots and line Grid texture */
+.holo-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: 
+    radial-gradient(rgba(0, 229, 255, 0.08) 1.5px, transparent 1.5px),
+    linear-gradient(rgba(0, 229, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 229, 255, 0.02) 1px, transparent 1px);
+  background-size: 24px 24px, 12px 12px, 12px 12px;
+  background-position: center;
+  z-index: 1;
+}
+
+/* Moving scan sweep */
+.holo-scanner {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(to bottom, transparent, rgba(0, 229, 255, 0.4), transparent);
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.7);
+  pointer-events: none;
+  z-index: 2;
+  animation: holo-sweep 6s linear infinite;
+}
+
+/* Horizontal scanlines */
+.holo-scanlines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 229, 255, 0.04) 50%
+  );
+  background-size: 100% 4px;
+  z-index: 1;
+}
+
+/* Solo Leveling Styled buttons */
+.holo-btn {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 0.75rem 2rem;
+  background: rgba(0, 229, 255, 0.04);
+  border: 1px solid rgba(0, 229, 255, 0.35);
+  color: var(--accent);
+  position: relative;
+  overflow: hidden;
+  cursor: none;
+  transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 0 8px rgba(0, 229, 255, 0.08);
+}
+
+.holo-btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 229, 255, 0.2),
+    transparent
+  );
+  transition: all 0.5s ease;
+}
+
+.holo-btn:hover {
+  background: rgba(0, 229, 255, 0.12);
+  border-color: rgba(0, 229, 255, 0.9);
+  color: #ffffff;
+  box-shadow: 0 0 16px rgba(0, 229, 255, 0.35), inset 0 0 8px rgba(0, 229, 255, 0.15);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
+  transform: translateY(-1px);
+}
+
+.holo-btn:hover::before {
+  left: 100%;
+}
+
+.holo-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 0 6px rgba(0, 229, 255, 0.25);
+}
+
+/* Solo Leveling Header and Footer bars styling */
+.solo-header-glowing-bar {
+  filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.6));
+}
+
+.solo-leveling-title-box {
+  background: rgba(6, 12, 28, 0.92);
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  padding: 0.5rem 2.2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.2), inset 0 0 10px rgba(0, 229, 255, 0.1);
+}
+
+/* Circular notification badge inside Solo Leveling modal */
+.holo-alert-circle {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1.5px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Space Mono', monospace;
+  font-weight: 900;
+  font-size: 0.85rem;
+  color: var(--accent);
+  box-shadow: 0 0 8px rgba(0, 229, 255, 0.4);
+  animation: holo-alert-pulse 1.8s infinite ease-in-out;
+}
+
+@keyframes holo-alert-pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 6px rgba(0, 229, 255, 0.4); }
+  50% { transform: scale(1.1); box-shadow: 0 0 14px rgba(0, 229, 255, 0.8); }
+}
+
+/* Modal Content Inner container scrollbar */
+.holo-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.holo-scroll::-webkit-scrollbar-track {
+  background: rgba(6, 12, 28, 0.6);
+}
+.holo-scroll::-webkit-scrollbar-thumb {
+  background: rgba(0, 229, 255, 0.4);
+  border-radius: 2px;
+  box-shadow: 0 0 4px rgba(0, 229, 255, 0.5);
+}
+.holo-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 229, 255, 0.8);
+}
