@@ -119,7 +119,8 @@ export default function Projects() {
 
   return (
     <section id="projects" style={{ paddingTop: '7rem', paddingBottom: '5rem' }}>
-      {/* Section header */}
+      <div className="section-container">
+        {/* Section header */}
       <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
         style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2.5rem' }}>
         <span style={{ fontFamily: "'Space Mono', monospace", fontSize: '0.78rem', color: 'var(--accent)', letterSpacing: '0.15em' }}>02 //</span>
@@ -160,6 +161,10 @@ export default function Projects() {
                 exit={{ opacity: 0, scale: 0.9, y: -10 }}
                 transition={{ delay: i * 0.07, duration: 0.4 }}
                 className="project-card-outer"
+                onClick={() => setActiveProject(project)}
+                style={{ cursor: 'none' }}
+                role="button"
+                tabIndex={0}
               >
                 <BorderGlow
                   borderRadius={14}
@@ -231,6 +236,7 @@ export default function Projects() {
       {activeProject && (
         <ProjectModal project={activeProject} onClose={() => setActiveProject(null)} />
       )}
+      </div>
     </section>
   );
 }

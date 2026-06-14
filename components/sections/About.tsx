@@ -14,7 +14,8 @@ const infoItems = [
 export default function About() {
   return (
     <section id="about" style={{ paddingTop: '7rem', paddingBottom: '5rem' }}>
-      {/* Section header */}
+      <div className="section-container">
+        {/* Section header */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -143,6 +144,7 @@ export default function About() {
             </motion.a>
           </motion.div>
         </motion.div>
+      </div>
       </div>
     </section>
   );

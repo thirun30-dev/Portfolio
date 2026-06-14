@@ -29,17 +29,15 @@ export default function Home() {
         transition: 'opacity 0.5s ease',
         paddingBottom: '5rem', // space for dock
       }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-          <Hero />
-          <About />
-          <Projects />
-          <Skills />
-          <Experience />
-          <Achievements />
-          <Education />
-          <Certifications />
-          <Contact />
-        </div>
+        <Hero />
+        <About />
+        <Projects />
+        <Skills />
+        <Experience />
+        <Achievements />
+        <Education />
+        <Certifications />
+        <Contact />
         <Footer />
       </main>
 

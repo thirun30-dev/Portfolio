@@ -196,6 +196,35 @@ export const projects: Project[] = [
     ],
     githubUrl: 'https://github.com/thirun30-dev',
   },
+  {
+    id: 'aws-rec',
+    num: 'Project 05',
+    title: 'AWS Student Builder Group REC Website',
+    summary: 'Official platform designed and built for the AWS Student Builder Group at Rajalakshmi Engineering College to promote and coordinate the AWS Community Day event.',
+    category: 'ds',
+    status: 'live',
+    image: '/images/aws_rec.png',
+    tags: [
+      { label: 'Next.js' },
+      { label: 'TypeScript' },
+      { label: 'AWS', color: 'green' },
+    ],
+    date: 'Jun 2026 · Live',
+    descBullets: [
+      'Built the official landing and registration platform for the AWS Community Day at Rajalakshmi Engineering College (REC).',
+      'Developed high-performance UI components using Next.js, React, and TypeScript with a futuristic tech aesthetic.',
+      'Designed event schedule, speaker info, and sponsor modules integrated with AWS serverless backend solutions for participant registration.'
+    ],
+    detailTags: [
+      { label: 'Next.js' },
+      { label: 'TypeScript' },
+      { label: 'Tailwind CSS' },
+      { label: 'AWS Lambda', color: 'red' },
+      { label: 'DynamoDB', color: 'green' },
+      { label: 'Serverless' }
+    ],
+    githubUrl: 'https://github.com/thirun30-dev',
+  },
 ];
 
 // ── SKILLS ─────────────────────────────────────────────────────

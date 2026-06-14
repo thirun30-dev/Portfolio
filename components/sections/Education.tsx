@@ -13,6 +13,7 @@ const eduGlows = [
 export default function Education() {
   return (
     <section id="education" style={{ paddingTop: '7rem', paddingBottom: '5rem' }}>
+      <div className="section-container">
       <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
         style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3rem' }}>
         <span style={{ fontFamily: "'Space Mono', monospace", fontSize: '0.78rem', color: 'var(--accent)', letterSpacing: '0.15em' }}>06 //</span>
@@ -110,6 +111,7 @@ export default function Education() {
             </motion.div>
           );
         })}
+      </div>
       </div>
     </section>
   );

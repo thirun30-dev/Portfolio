@@ -88,7 +88,8 @@ export default function Skills() {
 
   return (
     <section id="skills" style={{ paddingTop: '7rem', paddingBottom: '5rem' }}>
-      {/* Header */}
+      <div className="section-container">
+        {/* Header */}
       <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
         style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2.5rem' }}>
         <span style={{ fontFamily: "'Space Mono', monospace", fontSize: '0.78rem', color: 'var(--accent)', letterSpacing: '0.15em' }}>03 //</span>
@@ -173,6 +174,7 @@ export default function Skills() {
             </motion.div>
           );
         })}
+      </div>
       </div>
     </section>
   );

@@ -11,9 +11,10 @@ const contactItems = [
 export default function Contact() {
   return (
     <section id="contact" style={{ paddingTop: '7rem', paddingBottom: '8rem' }}>
+      <div className="section-container">
       <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
         style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3rem' }}>
-        <span style={{ fontFamily: "'Space Mono', monospace", fontSize: '0.78rem', color: 'var(--accent)', letterSpacing: '0.15em' }}>07 //</span>
+        <span style={{ fontFamily: "'Space Mono', monospace", fontSize: '0.78rem', color: 'var(--accent)', letterSpacing: '0.15em' }}>08 //</span>
         <h2 style={{ fontFamily: "var(--font-space-grotesk), sans-serif", fontSize: 'clamp(1.5rem,4vw,2.5rem)', fontWeight: 800, color: 'var(--text)' }}>Contact</h2>
         <div style={{ flex: 1, height: '1px', background: 'linear-gradient(to right, var(--accent), transparent)', opacity: 0.3 }} />
       </motion.div>
@@ -73,6 +74,7 @@ export default function Contact() {
             </motion.a>
           ))}
         </motion.div>
+      </div>
       </div>
     </section>
   );

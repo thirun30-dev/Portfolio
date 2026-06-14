@@ -1,8 +1,9 @@
 'use client';
 import { useEffect, useState } from 'react';
 import {
-  Home, User, FolderOpen, Cpu, Briefcase, Trophy, GraduationCap, Mail, GitBranch,
+  Home, User, FolderOpen, Cpu, Briefcase, Trophy, GraduationCap, Mail,
 } from 'lucide-react';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import Dock from './Dock';
 
 const sections = [
@@ -47,16 +48,21 @@ export default function DockNav() {
       onClick: () => scrollTo(s.id),
       className: activeId === s.id ? 'active-section' : '',
     })),
-    // Separator + GitHub
+    // Separator + Socials
     {
       isSeparator: true,
       icon: null,
       label: '',
     },
     {
-      icon: <GitBranch size={20} />,
+      icon: <FaGithub size={20} />,
       label: 'GitHub',
       onClick: () => window.open('https://github.com/thirun30-dev', '_blank'),
+    },
+    {
+      icon: <FaLinkedin size={20} />,
+      label: 'LinkedIn',
+      onClick: () => window.open('https://linkedin.com/in/thirunavukkarasu-veeramani-140b6a317', '_blank'),
     },
   ];
 
